@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>com.kk</groupId>
-	<artifactId>maven-web-application-kkfunda</artifactId>
+	<artifactId>maven-web-application</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	
@@ -134,6 +134,11 @@
 					</webApp>
 				</configuration>
 			</plugin>
+			<plugin>
+    <groupId>org.sonarsource.scanner.maven</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>5.2.0.4988</version>
+</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
