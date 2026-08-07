@@ -232,3 +232,59 @@ text-decoration:none;
 }
 
 </style>
+<div class="hero">
+
+<h1>🚀 MIE DevOps AWS Portal</h1>
+
+<p>CI/CD • Docker • Kubernetes • Jenkins • AWS • Terraform</p>
+
+<div class="badge-status">
+Production Environment
+</div>
+
+</div>
+
+<div class="glass text-center">
+
+<img src="images/kkfunda.jpg" class="logo">
+
+<h2 class="mt-4">MIE</h2>
+
+<p class="mb-3">
+Cloud Engineering | DevOps | Automation
+</p>
+
+<hr>
+
+<p><b>📍 Location</b><br>Bangalore, India</p>
+
+<p><b>📧 Email</b><br>mie@example.com</p>
+
+<p><b>📞 Phone</b><br>+91 XXXXX XXXXX</p>
+
+<a href="mailto:mie@example.com"
+class="btn btn-glass mt-3">
+
+Contact MIE
+
+</a>
+
+</div>
+<div class="glass text-center">
+
+<h2 class="section-title">
+⚙ Employee Portal
+</h2>
+
+<p>
+Secure access to employee information.
+</p>
+
+<a href="services/employee/getEmployeeDetails"
+class="btn btn-glass">
+
+View Employee Details
+
+</a>
+
+</div>
