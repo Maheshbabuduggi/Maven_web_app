@@ -1,102 +1,296 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.net.*" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>KK FUNDA Home Page</title>
-<link href="images/kkfunda.jpg" rel="icon">
-<!-- Bootstrap CDN -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>Mahesh DevOps AWS Portal</title>
+
+<link rel="icon" href="images/kkfunda.jpg">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-    body {
-        background: #f9f9f9;
-        font-family: Arial, sans-serif;
-    }
-    header {
-        background: linear-gradient(90deg, #007bff, #00c6ff);
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
-    h1, h3 {
-        margin: 10px 0;
-    }
-    .info-card {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-        padding: 20px;
-        margin: 20px auto;
-        max-width: 700px;
-    }
-    footer {
-        margin-top: 30px;
-        background: #222;
-        color: white;
-        padding: 15px;
-        text-align: center;
-    }
-    footer a {
-        color: #00c6ff;
-        text-decoration: none;
-    }
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+background-size:400% 400%;
+animation:gradient 12s ease infinite;
+min-height:100vh;
+color:white;
+
+}
+
+@keyframes gradient{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+.hero{
+
+padding:70px 20px;
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:3rem;
+font-weight:700;
+margin-bottom:15px;
+
+}
+
+.hero p{
+
+font-size:1.2rem;
+opacity:.9;
+
+}
+
+.glass{
+
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.2);
+border-radius:20px;
+padding:30px;
+margin-bottom:30px;
+transition:.4s;
+
+}
+
+.glass:hover{
+
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.section-title{
+
+font-weight:600;
+margin-bottom:20px;
+color:#FFD700;
+
+}
+
+.info{
+
+font-size:18px;
+margin-bottom:12px;
+
+}
+
+.logo{
+
+width:140px;
+height:140px;
+border-radius:50%;
+border:4px solid white;
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+
+}
+
+.btn-custom{
+
+background:#00d4ff;
+color:white;
+font-weight:600;
+border:none;
+padding:12px 25px;
+border-radius:50px;
+transition:.3s;
+
+}
+
+.btn-custom:hover{
+
+background:#00a3cc;
+transform:scale(1.05);
+
+}
+
+footer{
+
+padding:20px;
+text-align:center;
+margin-top:40px;
+background:rgba(0,0,0,.3);
+
+}
+
+footer a{
+
+color:#FFD700;
+text-decoration:none;
+
+}
+
+.badge-devops{
+
+background:#22c55e;
+padding:8px 18px;
+border-radius:30px;
+font-size:14px;
+
+}
+
 </style>
+
 </head>
+
 <body>
 
-<header>
-    <h1>🚀 Welcome to Mahesh DEVOPS AWS Portal 23:52PM 🚀</h1>
-    <h3>Training | Development | Consulting</h3>
-</header>
+<div class="hero">
+
+<h1>🚀 Mahesh DevOps AWS Portal 🚀</h1>
+
+<p>CI/CD • Docker • Kubernetes • AWS • Jenkins • Terraform</p>
+
+<span class="badge-devops">
+Production Ready
+</span>
+
+</div>
 
 <div class="container">
 
-    <!-- Server Info -->
-    <div class="info-card">
-        <h3>🌐 Server Side Information</h3>
-        <hr>
-        <%
-            InetAddress inetAddress = InetAddress.getLocalHost();
-            String ip = inetAddress.getHostAddress();
-            out.println("<p><b>Server Host Name:</b> " + inetAddress.getHostName() + "</p>");
-            out.println("<p><b>Server IP Address:</b> " + ip + "</p>");
-        %>
-    </div>
+<div class="row">
 
-    <!-- Client Info -->
-    <div class="info-card">
-        <h3>💻 Client Side Information</h3>
-        <hr>
-        <p><b>Client IP Address:</b> <%= request.getRemoteAddr() %></p>
-        <p><b>Client Host Name:</b> <%= request.getRemoteHost() %></p>
-    </div>
+<div class="col-lg-6">
 
-    <!-- Contact Info -->
-    <div class="info-card text-center">
-        <img src="images/kkfunda.jpg" alt="KK FUNDA Logo" width="120" class="mb-3 rounded-circle shadow">
-        <h4>KK FUNDA</h4>
-        <p><b>Address:</b> Martha Halli, Bangalore</p>
-        <p><b>Phone:</b> +91-9676831734</p>
-        <p><b>Email:</b> <a href="mailto:kkeducationblr@gmail.com">kkeducationblr@gmail.com</a></p>
-        <a href="mailto:kkeducation@gmail.com" class="btn btn-primary mt-2">📧 Mail to KK FUNDA</a>
-    </div>
+<div class="glass">
 
-    <!-- Service Links -->
-    <div class="info-card text-center">
-        <h4>⚙️ Our Services</h4>
-        <p><a href="services/employee/getEmployeeDetails" class="btn btn-success">Get Employee Details</a></p>
-    </div>
+<h3 class="section-title">
+🌐 Server Information
+</h3>
+
+<%
+
+InetAddress inetAddress=InetAddress.getLocalHost();
+
+String ip=inetAddress.getHostAddress();
+
+%>
+
+<p class="info">
+<b>Server Name :</b>
+<%=inetAddress.getHostName()%>
+</p>
+
+<p class="info">
+<b>Server IP :</b>
+<%=ip%>
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="glass">
+
+<h3 class="section-title">
+💻 Client Information
+</h3>
+
+<p class="info">
+<b>Client IP :</b>
+<%=request.getRemoteAddr()%>
+</p>
+
+<p class="info">
+<b>Client Host :</b>
+<%=request.getRemoteHost()%>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="glass text-center">
+
+<img src="images/kkfunda.jpg" class="logo mb-4">
+
+<h2>KK FUNDA</h2>
+
+<p>Training • Development • Consulting</p>
+
+<hr style="border-color:white;">
+
+<p><b>📍 Address :</b> Marathahalli, Bangalore</p>
+
+<p><b>📞 Phone :</b> +91-9676831734</p>
+
+<p><b>📧 Email :</b> kkeducationblr@gmail.com</p>
+
+<a href="mailto:kkeducationblr@gmail.com"
+class="btn btn-custom mt-3">
+Contact Us
+</a>
+
+</div>
+
+<div class="glass text-center">
+
+<h2 class="section-title">
+⚙️ Employee Services
+</h2>
+
+<p>
+Access Employee Management Portal
+</p>
+
+<a href="services/employee/getEmployeeDetails"
+class="btn btn-success btn-lg">
+Get Employee Details
+</a>
+
+</div>
 
 </div>
 
 <footer>
-    <p>© 2024 KK FUNDA Training & Development Center</p>
-    <p><small>Powered by <a href="https://google.com/">KK FUNDA</a></small></p>
+
+<p>
+
+© 2026 Mahesh DevOps AWS Portal
+
+</p>
+
+<p>
+
+Powered by
+<a href="https://google.com">
+KK FUNDA
+</a>
+
+</p>
+
 </footer>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
