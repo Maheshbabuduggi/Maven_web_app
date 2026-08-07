@@ -1,296 +1,234 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.net.*" %>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Mahesh DevOps AWS Portal</title>
-
-<link rel="icon" href="images/kkfunda.jpg">
-
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
 
-background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
-background-size:400% 400%;
-animation:gradient 12s ease infinite;
-min-height:100vh;
-color:white;
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top left,#5b21b6,#1e3a8a 30%,#0f172a 80%);
+
+    overflow-x:hidden;
+
+    color:white;
 
 }
 
-@keyframes gradient{
+/* Animated circles */
 
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+body::before,
+body::after{
+
+content:"";
+position:fixed;
+width:350px;
+height:350px;
+border-radius:50%;
+filter:blur(80px);
+z-index:-1;
+
+}
+
+body::before{
+
+background:#4f46e5;
+top:-100px;
+left:-100px;
+
+}
+
+body::after{
+
+background:#06b6d4;
+bottom:-100px;
+right:-100px;
 
 }
 
 .hero{
 
-padding:70px 20px;
+padding:60px 20px;
 text-align:center;
 
 }
 
 .hero h1{
 
-font-size:3rem;
+font-size:3.3rem;
 font-weight:700;
-margin-bottom:15px;
+text-shadow:0 0 20px rgba(255,255,255,.4);
 
 }
 
 .hero p{
 
-font-size:1.2rem;
+font-size:20px;
 opacity:.9;
 
 }
 
 .glass{
 
-background:rgba(255,255,255,.12);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.2);
-border-radius:20px;
-padding:30px;
-margin-bottom:30px;
+background:rgba(255,255,255,.10);
+
+backdrop-filter:blur(30px);
+
+-webkit-backdrop-filter:blur(30px);
+
+border:1px solid rgba(255,255,255,.25);
+
+border-radius:30px;
+
+box-shadow:
+
+0 8px 32px rgba(0,0,0,.35),
+
+inset 0 1px 1px rgba(255,255,255,.3);
+
+padding:35px;
+
+margin-bottom:35px;
+
 transition:.4s;
 
 }
 
 .glass:hover{
 
-transform:translateY(-8px);
-box-shadow:0 20px 40px rgba(0,0,0,.35);
+transform:translateY(-10px) scale(1.02);
+
+box-shadow:
+
+0 25px 60px rgba(0,0,0,.45),
+
+0 0 35px rgba(37,99,235,.4);
 
 }
 
 .section-title{
 
+font-size:28px;
+
 font-weight:600;
+
 margin-bottom:20px;
-color:#FFD700;
+
+color:#ffffff;
 
 }
 
 .info{
 
 font-size:18px;
-margin-bottom:12px;
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+.info:last-child{
+
+border-bottom:none;
 
 }
 
 .logo{
 
-width:140px;
-height:140px;
+width:150px;
+
+height:150px;
+
 border-radius:50%;
-border:4px solid white;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
+
+border:4px solid rgba(255,255,255,.4);
+
+box-shadow:
+
+0 0 25px rgba(255,255,255,.4);
+
+object-fit:cover;
 
 }
 
-.btn-custom{
+.btn-glass{
 
-background:#00d4ff;
+background:rgba(255,255,255,.15);
+
+border:1px solid rgba(255,255,255,.25);
+
 color:white;
-font-weight:600;
-border:none;
-padding:12px 25px;
+
+padding:14px 30px;
+
 border-radius:50px;
+
+font-weight:600;
+
 transition:.3s;
 
+backdrop-filter:blur(15px);
+
 }
 
-.btn-custom:hover{
+.btn-glass:hover{
 
-background:#00a3cc;
+background:#2563eb;
+
+color:white;
+
 transform:scale(1.05);
+
+box-shadow:0 0 20px #2563eb;
+
+}
+
+.badge-status{
+
+display:inline-block;
+
+padding:10px 22px;
+
+border-radius:50px;
+
+background:rgba(16,185,129,.2);
+
+border:1px solid rgba(16,185,129,.5);
+
+color:#7CFFB2;
+
+margin-top:15px;
 
 }
 
 footer{
 
-padding:20px;
+margin-top:50px;
+
+padding:25px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
 text-align:center;
-margin-top:40px;
-background:rgba(0,0,0,.3);
 
 }
 
 footer a{
 
-color:#FFD700;
+color:#8fd3ff;
+
 text-decoration:none;
 
 }
 
-.badge-devops{
-
-background:#22c55e;
-padding:8px 18px;
-border-radius:30px;
-font-size:14px;
-
-}
-
 </style>
-
-</head>
-
-<body>
-
-<div class="hero">
-
-<h1>🚀 Mahesh DevOps AWS Portal 🚀</h1>
-
-<p>CI/CD • Docker • Kubernetes • AWS • Jenkins • Terraform</p>
-
-<span class="badge-devops">
-Production Ready
-</span>
-
-</div>
-
-<div class="container">
-
-<div class="row">
-
-<div class="col-lg-6">
-
-<div class="glass">
-
-<h3 class="section-title">
-🌐 Server Information
-</h3>
-
-<%
-
-InetAddress inetAddress=InetAddress.getLocalHost();
-
-String ip=inetAddress.getHostAddress();
-
-%>
-
-<p class="info">
-<b>Server Name :</b>
-<%=inetAddress.getHostName()%>
-</p>
-
-<p class="info">
-<b>Server IP :</b>
-<%=ip%>
-</p>
-
-</div>
-
-</div>
-
-<div class="col-lg-6">
-
-<div class="glass">
-
-<h3 class="section-title">
-💻 Client Information
-</h3>
-
-<p class="info">
-<b>Client IP :</b>
-<%=request.getRemoteAddr()%>
-</p>
-
-<p class="info">
-<b>Client Host :</b>
-<%=request.getRemoteHost()%>
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="glass text-center">
-
-<img src="images/kkfunda.jpg" class="logo mb-4">
-
-<h2>KK FUNDA</h2>
-
-<p>Training • Development • Consulting</p>
-
-<hr style="border-color:white;">
-
-<p><b>📍 Address :</b> Marathahalli, Bangalore</p>
-
-<p><b>📞 Phone :</b> +91-9676831734</p>
-
-<p><b>📧 Email :</b> kkeducationblr@gmail.com</p>
-
-<a href="mailto:kkeducationblr@gmail.com"
-class="btn btn-custom mt-3">
-Contact Us
-</a>
-
-</div>
-
-<div class="glass text-center">
-
-<h2 class="section-title">
-⚙️ Employee Services
-</h2>
-
-<p>
-Access Employee Management Portal
-</p>
-
-<a href="services/employee/getEmployeeDetails"
-class="btn btn-success btn-lg">
-Get Employee Details
-</a>
-
-</div>
-
-</div>
-
-<footer>
-
-<p>
-
-© 2026 Mahesh DevOps AWS Portal
-
-</p>
-
-<p>
-
-Powered by
-<a href="https://google.com">
-KK FUNDA
-</a>
-
-</p>
-
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
