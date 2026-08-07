@@ -233,7 +233,7 @@ String ip=inetAddress.getHostAddress();
 
 <img src="images/kkfunda.jpg" class="logo mb-4">
 
-<h2>KK FUNDA</h2>
+<h2>Mahesh Duggi</h2>
 
 <p>Training • Development • Consulting</p>
 
