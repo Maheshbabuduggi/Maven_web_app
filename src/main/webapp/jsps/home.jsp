@@ -161,7 +161,7 @@ font-size:14px;
 
 <div class="hero">
 
-<h1>🚀 Mahesh DevOps AWS Portal Aug 9th 🚀</h1>
+<h1>🚀 Mahesh DevOps AWS Portal Aug 10th 🚀</h1>
 
 <p>CI/CD • Docker • Kubernetes • AWS • Jenkins • Terraform</p>
 
