@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>com.kk</groupId>
+	<groupId>com.Mahesh</groupId>
 	<artifactId>maven-web-application</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
@@ -12,8 +12,8 @@
 	<description>Maven Web Project for Java Project</description>
 
 	<organization>
-		<name>KK FUNDA</name>
-		<url>http://kkfunda.com</url>
+		<name>Mahesh</name>
+		<url>http://Mahesh.com</url>
 	</organization>
 
 	<properties>
@@ -21,7 +21,7 @@
 		<spring.version>5.3.34</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-<sonar.host.url>http://13.206.110.156:9000/</sonar.host.url>		
+<sonar.host.url>http://43.204.24.106:9000/</sonar.host.url>		
 <sonar.login>admin</sonar.login>
 		<sonar.password>password</sonar.password> 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name> Maven web app Releases Nexus Repository</name>
-	   <url>http://13.201.11.218:8081/repository/jio-release/</url>
+	   <url>http://13.233.197.203:8081/repository/jio-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Maven web app Snapshot Nexus Repository </name>
-	      <url>http://13.201.11.218:8081/repository/jio-snapshot/</url>
+	      <url>http://13.233.197.203:8081/repository/jio-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
