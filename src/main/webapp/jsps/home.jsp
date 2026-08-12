@@ -5,314 +5,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mahesh DevOps AWS Portal</title>
 
-<link rel="icon" href="images/kkfunda.jpg">
+<title>Hotel Booking Portal</title>
 
 <!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
 
 <style>
 
-:root{
-  --accent-cyan:#00d4ff;
-  --accent-gold:#ffd700;
-  --accent-green:#22c55e;
-  --glass-bg:rgba(255,255,255,.08);
-  --glass-border:rgba(255,255,255,.16);
+:root {
+    --primary: #00b4d8;
+    --secondary: #0077b6;
+    --gold: #ffd166;
+    --green: #22c55e;
+    --glass: rgba(255,255,255,0.10);
+    --border: rgba(255,255,255,0.18);
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-  background:
-    radial-gradient(circle at 15% 20%, rgba(0,212,255,.15), transparent 45%),
-    radial-gradient(circle at 85% 75%, rgba(255,215,0,.10), transparent 45%),
-    linear-gradient(135deg,#020617,#0f172a,#1e3a8a,#1d4ed8);
-  background-size:200% 200%, 200% 200%, 400% 400%;
-  animation:gradient 16s ease infinite;
-  min-height:100vh;
-  color:white;
-  overflow-x:hidden;
+body {
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0,180,216,.20), transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(255,209,102,.15), transparent 40%),
+        linear-gradient(135deg, #020617, #0f172a, #164e63, #0369a1);
+
+    background-size: 200% 200%, 200% 200%, 400% 400%;
+    animation: backgroundMove 18s ease infinite;
 }
 
-@keyframes gradient{
-  0%{background-position:0% 50%, 100% 50%, 0% 50%;}
-  50%{background-position:100% 50%, 0% 50%, 100% 50%;}
-  100%{background-position:0% 50%, 100% 50%, 0% 50%;}
+@keyframes backgroundMove {
+
+    0% {
+        background-position: 0% 50%, 100% 50%, 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%, 0% 50%, 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%, 100% 50%, 0% 50%;
+    }
 }
 
-@keyframes floatUp{
-  from{opacity:0; transform:translateY(24px);}
-  to{opacity:1; transform:translateY(0);}
+/* NAVBAR */
+
+.navbar-custom {
+    background: rgba(0,0,0,.25);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
-@keyframes pulseGlow{
-  0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5);}
-  50%{box-shadow:0 0 0 10px rgba(34,197,94,0);}
+.brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white !important;
 }
 
-.container{
-  max-width:1140px;
+.brand span {
+    color: var(--gold);
 }
 
 /* HERO */
-.hero{
-  padding:90px 20px 60px;
-  text-align:center;
-  animation:floatUp .8s ease both;
+
+.hero {
+    padding: 90px 20px 70px;
+    text-align: center;
 }
 
-.hero .eyebrow{
-  display:inline-block;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  font-size:.75rem;
-  font-weight:600;
-  color:var(--accent-cyan);
-  margin-bottom:14px;
-  opacity:.85;
+.hero .eyebrow {
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: .75rem;
+    font-weight: 600;
 }
 
-.hero h1{
-  font-size:clamp(2.1rem, 5vw, 3.4rem);
-  font-weight:800;
-  margin-bottom:16px;
-  letter-spacing:-.5px;
-  text-shadow:0 4px 30px rgba(0,0,0,.35);
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: 18px;
+    text-shadow: 0 8px 30px rgba(0,0,0,.4);
 }
 
-.hero p{
-  font-size:1.15rem;
-  opacity:.85;
-  font-weight:300;
-  letter-spacing:.5px;
-  margin-bottom:22px;
+.hero p {
+    font-size: 1.15rem;
+    opacity: .85;
 }
 
-.badge-devops{
-  background:linear-gradient(135deg,#22c55e,#16a34a);
-  padding:9px 22px;
-  border-radius:30px;
-  font-size:14px;
-  font-weight:600;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  animation:pulseGlow 2.4s infinite;
+/* GLASS */
+
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+    padding: 32px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
+
+    transition: .35s ease;
 }
 
-.badge-devops::before{
-  content:'';
-  width:8px;
-  height:8px;
-  background:white;
-  border-radius:50%;
-  display:inline-block;
+.glass:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0,0,0,.35);
 }
 
-/* GLASS CARDS */
-.glass{
-  background:var(--glass-bg);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border:1px solid var(--glass-border);
-  border-radius:22px;
-  padding:34px;
-  margin-bottom:28px;
-  transition:.35s cubic-bezier(.2,.8,.2,1);
-  position:relative;
-  overflow:hidden;
-  animation:floatUp .7s ease both;
+/* SEARCH */
+
+.booking-card {
+    margin-top: -20px;
+    position: relative;
+    z-index: 2;
 }
 
-.glass::before{
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0;
-  height:1px;
-  background:linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
+.booking-title {
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--gold);
 }
 
-.glass:hover{
-  transform:translateY(-8px);
-  box-shadow:0 24px 50px rgba(0,0,0,.4);
-  border-color:rgba(255,255,255,.32);
+.form-label {
+    font-size: 13px;
+    opacity: .8;
 }
 
-.section-title{
-  font-weight:600;
-  margin-bottom:22px;
-  color:var(--accent-gold);
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:1.25rem;
+.form-control,
+.form-select {
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.18);
+    color: white;
+    padding: 13px;
+    border-radius: 12px;
 }
 
-.info{
-  font-size:16px;
-  margin-bottom:14px;
-  padding:12px 16px;
-  background:rgba(255,255,255,.05);
-  border-radius:12px;
-  border-left:3px solid var(--accent-cyan);
-  word-break:break-word;
+.form-control:focus,
+.form-select:focus {
+    background: rgba(255,255,255,.15);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0,180,216,.15);
 }
 
-.info b{
-  color:var(--accent-cyan);
-  font-weight:500;
-  margin-right:6px;
+.form-control::placeholder {
+    color: rgba(255,255,255,.55);
 }
 
-/* PROFILE */
-.profile-card{
-  text-align:center;
+.form-select option {
+    color: black;
 }
 
-.logo{
-  width:150px;
-  height:150px;
-  border-radius:50%;
-  border:4px solid rgba(255,255,255,.5);
-  box-shadow:0 10px 40px rgba(0,0,0,.5), 0 0 0 8px rgba(0,212,255,.12);
-  object-fit:cover;
-  transition:.4s;
+.btn-book {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color: white;
+    font-weight: 600;
+
+    box-shadow: 0 10px 25px rgba(0,180,216,.30);
+
+    transition: .3s;
 }
 
-.logo:hover{
-  transform:scale(1.05) rotate(2deg);
+.btn-book:hover {
+    transform: translateY(-2px) scale(1.02);
+    color: white;
 }
 
-.profile-card h2{
-  margin-top:22px;
-  font-weight:700;
-  font-size:1.8rem;
+/* SECTION */
+
+.section {
+    margin-top: 60px;
 }
 
-.profile-card .tagline{
-  opacity:.75;
-  font-weight:300;
-  letter-spacing:1px;
-  margin-bottom:6px;
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
 }
 
-.profile-card hr{
-  border-color:rgba(255,255,255,.15);
-  margin:22px auto;
-  width:60%;
+/* HOTEL CARDS */
+
+.hotel-card {
+    overflow: hidden;
+    padding: 0;
 }
 
-.contact-row{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:14px;
-  margin:18px 0 6px;
+.hotel-image {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
 }
 
-.contact-pill{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.14);
-  padding:9px 18px;
-  border-radius:30px;
-  font-size:14px;
-  transition:.3s;
+.hotel-content {
+    padding: 22px;
 }
 
-.contact-pill:hover{
-  background:rgba(255,255,255,.14);
-  transform:translateY(-2px);
+.hotel-name {
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
-.btn-custom{
-  background:linear-gradient(135deg,#00d4ff,#0284c7);
-  color:white;
-  font-weight:600;
-  border:none;
-  padding:13px 32px;
-  border-radius:50px;
-  transition:.3s;
-  box-shadow:0 8px 24px rgba(0,212,255,.3);
+.hotel-location {
+    font-size: 14px;
+    opacity: .7;
+    margin: 8px 0;
 }
 
-.btn-custom:hover{
-  background:linear-gradient(135deg,#00a3cc,#0369a1);
-  transform:scale(1.05);
-  box-shadow:0 10px 30px rgba(0,212,255,.45);
-  color:white;
+.rating {
+    color: var(--gold);
+    font-size: 14px;
 }
 
-/* SERVICES */
-.services-card{
-  text-align:center;
-  background:linear-gradient(135deg, rgba(0,212,255,.08), rgba(255,255,255,.06));
+.price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
 }
 
-.services-card p{
-  opacity:.85;
-  margin-bottom:22px;
+.price span {
+    font-size: 12px;
+    opacity: .7;
+    color: white;
 }
 
-.btn-success{
-  background:linear-gradient(135deg,#22c55e,#15803d) !important;
-  border:none !important;
-  font-weight:600;
-  padding:13px 34px !important;
-  border-radius:50px !important;
-  box-shadow:0 8px 24px rgba(34,197,94,.3);
-  transition:.3s !important;
+/* FEATURES */
+
+.feature {
+    text-align: center;
+    padding: 25px;
 }
 
-.btn-success:hover{
-  transform:scale(1.05);
-  box-shadow:0 10px 30px rgba(34,197,94,.45);
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.feature h4 {
+    font-size: 1.1rem;
+}
+
+.feature p {
+    opacity: .7;
+    font-size: 14px;
+}
+
+/* SERVER INFO */
+
+.info {
+    padding: 12px 16px;
+    background: rgba(255,255,255,.05);
+    border-radius: 12px;
+    border-left: 3px solid var(--primary);
+    margin-bottom: 12px;
+}
+
+.info b {
+    color: var(--primary);
 }
 
 /* FOOTER */
-footer{
-  padding:28px 20px;
-  text-align:center;
-  margin-top:50px;
-  background:rgba(0,0,0,.35);
-  border-top:1px solid rgba(255,255,255,.1);
+
+footer {
+    margin-top: 80px;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: rgba(0,0,0,.35);
+    border-top: 1px solid rgba(255,255,255,.1);
 }
 
-footer p{
-  font-size:14px;
-  opacity:.8;
-  margin-bottom:4px;
+footer p {
+    margin: 4px;
+    opacity: .7;
+    font-size: 14px;
 }
 
-footer a{
-  color:var(--accent-gold);
-  text-decoration:none;
-  font-weight:600;
-  transition:.2s;
-}
+/* MOBILE */
 
-footer a:hover{
-  color:var(--accent-cyan);
-}
+@media(max-width:768px) {
 
-@media (max-width:768px){
-  .hero{padding:60px 16px 40px;}
-  .glass{padding:24px;}
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .glass {
+        padding: 22px;
+    }
+
 }
 
 </style>
@@ -321,83 +342,525 @@ footer a:hover{
 
 <body>
 
-<div class="hero">
-  <span class="eyebrow">AWS &middot; DevOps &middot; Cloud Engineering</span>
-  <h1>🚀 Mahesh DevOps AWS Portal</h1>
-  <p>CI/CD &nbsp;•&nbsp; Docker &nbsp;•&nbsp; Kubernetes &nbsp;•&nbsp; AWS &nbsp;•&nbsp; Jenkins &nbsp;•&nbsp; Terraform</p>
-  <span class="badge-devops">Production Ready</span>
-</div>
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+
+    <div class="container">
+
+        <a class="navbar-brand brand" href="#">
+            🏨 Stay<span>Easy</span>
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#booking">Book</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#hotels">Hotels</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="eyebrow">
+            Premium Hotel Booking
+        </div>
+
+        <h1>
+            🏨 Hotel Booking Portal
+        </h1>
+
+        <p>
+            Find your perfect stay. Book your room. Enjoy your journey.
+        </p>
+
+    </div>
+
+</section>
+
 
 <div class="container">
 
-  <div class="row">
 
-    <div class="col-lg-6">
-      <div class="glass" style="animation-delay:.05s">
-        <h3 class="section-title">🌐 Server Information</h3>
+<!-- BOOKING SEARCH -->
 
-        <%
-          InetAddress inetAddress = InetAddress.getLocalHost();
-          String ip = inetAddress.getHostAddress();
-        %>
+<div class="glass booking-card" id="booking">
 
-        <p class="info"><b>Server Name :</b><%=inetAddress.getHostName()%></p>
-        <p class="info"><b>Server IP :</b><%=ip%></p>
-      </div>
-    </div>
+    <h3 class="booking-title">
+        🔎 Find Your Perfect Stay
+    </h3>
 
-    <div class="col-lg-6">
-      <div class="glass" style="animation-delay:.15s">
-        <h3 class="section-title">💻 Client Information</h3>
+    <form action="searchHotel" method="get">
 
-        <p class="info"><b>Client IP :</b><%=request.getRemoteAddr()%></p>
-        <p class="info"><b>Client Host :</b><%=request.getRemoteHost()%></p>
-      </div>
-    </div>
+        <div class="row g-3">
 
-  </div>
+            <div class="col-lg-3 col-md-6">
 
-  <div class="glass profile-card" style="animation-delay:.25s">
+                <label class="form-label">
+                    Destination
+                </label>
 
-    <img src="images/kkfunda.jpg" class="logo mb-3">
+                <input
+                    type="text"
+                    name="destination"
+                    class="form-control"
+                    placeholder="City or hotel"
+                    required>
 
-    <h2>Mahesh Duggi</h2>
-    <p class="tagline">Training • Development • Consulting</p>
+            </div>
 
-    <hr>
 
-    <div class="contact-row">
-      <span class="contact-pill">📍 Marathahalli, Bangalore</span>
-      <span class="contact-pill">📞 +91-9676831734</span>
-      <span class="contact-pill">📧 kkeducationblr@gmail.com</span>
-    </div>
+            <div class="col-lg-2 col-md-6">
 
-    <a href="mailto:kkeducationblr@gmail.com" class="btn btn-custom mt-4">
-      Contact Us
-    </a>
+                <label class="form-label">
+                    Check-in
+                </label>
 
-  </div>
+                <input
+                    type="date"
+                    name="checkIn"
+                    class="form-control"
+                    required>
 
-  <div class="glass services-card" style="animation-delay:.35s">
+            </div>
 
-    <h2 class="section-title" style="justify-content:center;">⚙️ Employee Services</h2>
 
-    <p>Access Employee Management Portal</p>
+            <div class="col-lg-2 col-md-6">
 
-    <a href="services/employee/getEmployeeDetails" class="btn btn-success btn-lg">
-      Get Employee Details
-    </a>
+                <label class="form-label">
+                    Check-out
+                </label>
 
-  </div>
+                <input
+                    type="date"
+                    name="checkOut"
+                    class="form-control"
+                    required>
+
+            </div>
+
+
+            <div class="col-lg-2 col-md-6">
+
+                <label class="form-label">
+                    Guests
+                </label>
+
+                <select name="guests" class="form-select">
+
+                    <option value="1">
+                        1 Guest
+                    </option>
+
+                    <option value="2" selected>
+                        2 Guests
+                    </option>
+
+                    <option value="3">
+                        3 Guests
+                    </option>
+
+                    <option value="4">
+                        4 Guests
+                    </option>
+
+                    <option value="5">
+                        5+ Guests
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-12 d-flex align-items-end">
+
+                <button
+                    type="submit"
+                    class="btn-book">
+
+                    🔍 Search Hotels
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
 
 </div>
 
+
+<!-- HOTELS -->
+
+<section class="section" id="hotels">
+
+    <h2 class="section-title">
+        ⭐ Popular Hotels
+    </h2>
+
+
+    <div class="row g-4">
+
+
+        <!-- HOTEL 1 -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="glass hotel-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80"
+                    class="hotel-image"
+                    alt="Luxury Hotel">
+
+                <div class="hotel-content">
+
+                    <div class="hotel-name">
+                        Grand Palace Hotel
+                    </div>
+
+                    <div class="hotel-location">
+                        📍 Bangalore, India
+                    </div>
+
+                    <div class="rating">
+                        ★★★★★
+                        <span>4.8</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="price">
+                            ₹4,999
+                            <span>/ night</span>
+                        </div>
+
+                        <a href="booking.jsp"
+                           class="btn btn-sm btn-book"
+                           style="width:auto;padding:8px 18px;">
+
+                            Book
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOTEL 2 -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="glass hotel-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80"
+                    class="hotel-image"
+                    alt="Luxury Resort">
+
+                <div class="hotel-content">
+
+                    <div class="hotel-name">
+                        Ocean View Resort
+                    </div>
+
+                    <div class="hotel-location">
+                        📍 Goa, India
+                    </div>
+
+                    <div class="rating">
+                        ★★★★★
+                        <span>4.9</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="price">
+                            ₹6,499
+                            <span>/ night</span>
+                        </div>
+
+                        <a href="booking.jsp"
+                           class="btn btn-sm btn-book"
+                           style="width:auto;padding:8px 18px;">
+
+                            Book
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOTEL 3 -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="glass hotel-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=80"
+                    class="hotel-image"
+                    alt="City Hotel">
+
+                <div class="hotel-content">
+
+                    <div class="hotel-name">
+                        Royal City Hotel
+                    </div>
+
+                    <div class="hotel-location">
+                        📍 Hyderabad, India
+                    </div>
+
+                    <div class="rating">
+                        ★★★★☆
+                        <span>4.6</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="price">
+                            ₹3,999
+                            <span>/ night</span>
+                        </div>
+
+                        <a href="booking.jsp"
+                           class="btn btn-sm btn-book"
+                           style="width:auto;padding:8px 18px;">
+
+                            Book
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="section" id="features">
+
+    <h2 class="section-title">
+        ✨ Why Book With Us?
+    </h2>
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <div class="glass feature">
+
+                <div class="feature-icon">
+                    🔒
+                </div>
+
+                <h4>
+                    Secure Booking
+                </h4>
+
+                <p>
+                    Your booking information is protected with secure
+                    technology.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-4">
+
+            <div class="glass feature">
+
+                <div class="feature-icon">
+                    💰
+                </div>
+
+                <h4>
+                    Best Prices
+                </h4>
+
+                <p>
+                    Find comfortable hotels at competitive prices.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-4">
+
+            <div class="glass feature">
+
+                <div class="feature-icon">
+                    ⭐
+                </div>
+
+                <h4>
+                    Top Rated Hotels
+                </h4>
+
+                <p>
+                    Choose from highly rated hotels and resorts.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVER INFORMATION -->
+
+<section class="section">
+
+    <div class="row g-4">
+
+
+        <div class="col-lg-6">
+
+            <div class="glass">
+
+                <h3 class="booking-title">
+                    🌐 Server Information
+                </h3>
+
+                <%
+
+                    InetAddress inetAddress =
+                        InetAddress.getLocalHost();
+
+                    String ip =
+                        inetAddress.getHostAddress();
+
+                %>
+
+                <p class="info">
+                    <b>Server Name:</b>
+                    <%=inetAddress.getHostName()%>
+                </p>
+
+                <p class="info">
+                    <b>Server IP:</b>
+                    <%=ip%>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-6">
+
+            <div class="glass">
+
+                <h3 class="booking-title">
+                    💻 Client Information
+                </h3>
+
+                <p class="info">
+                    <b>Client IP:</b>
+                    <%=request.getRemoteAddr()%>
+                </p>
+
+                <p class="info">
+                    <b>Client Host:</b>
+                    <%=request.getRemoteHost()%>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
 <footer>
-  <p>© 2026 Mahesh DevOps AWS Portal</p>
-  <p>Powered by <a href="https://google.com">Mahesh</a></p>
+
+    <p>
+        © 2026 Hotel Booking Portal
+    </p>
+
+    <p>
+        Find your stay. Make your journey memorable.
+    </p>
+
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
 
 </body>
+
 </html>
