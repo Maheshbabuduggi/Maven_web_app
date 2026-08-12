@@ -15,19 +15,28 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet">
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet">
+
+<!-- Google Fonts: Fraunces (display) + Poppins (body) -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet">
 
 <style>
 
 :root {
-    --primary: #00b4d8;
-    --secondary: #0077b6;
-    --gold: #ffd166;
-    --green: #22c55e;
-    --glass: rgba(255,255,255,0.10);
-    --border: rgba(255,255,255,0.18);
+    --ink: #eef4f2;
+    --night: #06201f;
+    --night-2: #0a2e2c;
+    --teal: #0f4c46;
+    --amber: #e0a458;
+    --amber-light: #f2c98a;
+    --gold: #d4a656;
+    --brass: #b98545;
+    --glass: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.14);
+    --stub: rgba(6,32,31,0.55);
 }
 
 * {
@@ -43,77 +52,111 @@ html {
 
 body {
     min-height: 100vh;
-    color: white;
+    color: var(--ink);
     overflow-x: hidden;
 
     background:
-        radial-gradient(circle at 15% 20%, rgba(0,180,216,.20), transparent 40%),
-        radial-gradient(circle at 85% 70%, rgba(255,209,102,.15), transparent 40%),
-        linear-gradient(135deg, #020617, #0f172a, #164e63, #0369a1);
+        radial-gradient(circle at 12% 15%, rgba(224,164,88,.14), transparent 42%),
+        radial-gradient(circle at 88% 75%, rgba(15,76,70,.35), transparent 45%),
+        linear-gradient(160deg, #04140f, #06201f 45%, #0a2e2c 100%);
 
-    background-size: 200% 200%, 200% 200%, 400% 400%;
-    animation: backgroundMove 18s ease infinite;
+    background-attachment: fixed;
 }
 
-@keyframes backgroundMove {
-
-    0% {
-        background-position: 0% 50%, 100% 50%, 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%, 0% 50%, 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%, 100% 50%, 0% 50%;
-    }
+h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    letter-spacing: .2px;
 }
 
 /* NAVBAR */
 
 .navbar-custom {
-    background: rgba(0,0,0,.25);
+    background: rgba(6,32,31,.55);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255,255,255,.12);
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    transition: padding .3s ease, background .3s ease;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.navbar-custom.scrolled {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: rgba(4,20,15,.85);
 }
 
 .brand {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: white !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand i {
+    color: var(--amber);
 }
 
 .brand span {
-    color: var(--gold);
+    color: var(--amber);
+    font-style: italic;
+}
+
+.nav-link {
+    color: rgba(255,255,255,.8) !important;
+    font-size: 14px;
+    letter-spacing: .3px;
+}
+
+.nav-link:hover {
+    color: var(--amber-light) !important;
 }
 
 /* HERO */
 
 .hero {
-    padding: 90px 20px 70px;
+    padding: 100px 20px 80px;
     text-align: center;
+    position: relative;
 }
 
 .hero .eyebrow {
-    color: var(--gold);
-    letter-spacing: 3px;
+    color: var(--amber);
+    letter-spacing: 4px;
     text-transform: uppercase;
-    font-size: .75rem;
+    font-size: .72rem;
     font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero .eyebrow::before,
+.hero .eyebrow::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--amber);
+    opacity: .6;
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
-    margin-top: 15px;
+    font-size: clamp(2.6rem, 6vw, 4.8rem);
+    font-weight: 600;
+    margin-top: 18px;
     margin-bottom: 18px;
     text-shadow: 0 8px 30px rgba(0,0,0,.4);
+    font-style: italic;
 }
 
 .hero p {
-    font-size: 1.15rem;
-    opacity: .85;
+    font-size: 1.1rem;
+    opacity: .78;
+    max-width: 560px;
+    margin: 0 auto;
+    font-weight: 300;
 }
 
 /* GLASS */
@@ -124,18 +167,18 @@ body {
     -webkit-backdrop-filter: blur(18px);
 
     border: 1px solid var(--border);
-    border-radius: 24px;
+    border-radius: 20px;
 
     padding: 32px;
 
-    box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    box-shadow: 0 20px 50px rgba(0,0,0,.30);
 
     transition: .35s ease;
 }
 
 .glass:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 30px 60px rgba(0,0,0,.35);
+    transform: translateY(-4px);
+    box-shadow: 0 30px 60px rgba(0,0,0,.4);
 }
 
 /* SEARCH */
@@ -147,35 +190,40 @@ body {
 }
 
 .booking-title {
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 25px;
-    color: var(--gold);
+    color: var(--amber-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .form-label {
-    font-size: 13px;
-    opacity: .8;
+    font-size: 12px;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    opacity: .65;
 }
 
 .form-control,
 .form-select {
-    background: rgba(255,255,255,.10);
-    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.16);
     color: white;
     padding: 13px;
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
 .form-control:focus,
 .form-select:focus {
-    background: rgba(255,255,255,.15);
+    background: rgba(255,255,255,.12);
     color: white;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(0,180,216,.15);
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(224,164,88,.18);
 }
 
 .form-control::placeholder {
-    color: rgba(255,255,255,.55);
+    color: rgba(255,255,255,.45);
 }
 
 .form-select option {
@@ -190,100 +238,208 @@ body {
 
     background: linear-gradient(
         135deg,
-        var(--primary),
-        var(--secondary)
+        var(--amber),
+        var(--brass)
     );
 
-    color: white;
+    color: var(--night);
     font-weight: 600;
+    letter-spacing: .3px;
 
-    box-shadow: 0 10px 25px rgba(0,180,216,.30);
+    box-shadow: 0 10px 25px rgba(224,164,88,.28);
 
     transition: .3s;
 }
 
 .btn-book:hover {
     transform: translateY(-2px) scale(1.02);
-    color: white;
+    color: var(--night);
+    box-shadow: 0 14px 30px rgba(224,164,88,.4);
 }
 
 /* SECTION */
 
 .section {
-    margin-top: 60px;
+    margin-top: 70px;
 }
 
 .section-title {
     text-align: center;
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 30px;
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-style: italic;
 }
 
-/* HOTEL CARDS */
+.section-sub {
+    text-align: center;
+    opacity: .6;
+    font-size: 14px;
+    margin-bottom: 34px;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+}
+
+/* HOTEL CARDS — boarding-pass / ticket-stub styling */
 
 .hotel-card {
-    overflow: hidden;
+    overflow: visible;
     padding: 0;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.hotel-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hotel-image-wrap {
+    position: relative;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
 }
 
 .hotel-image {
     width: 100%;
     height: 210px;
     object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.hotel-card:hover .hotel-image {
+    transform: scale(1.06);
+}
+
+.hotel-rating-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(6,32,31,.75);
+    backdrop-filter: blur(6px);
+    color: var(--amber-light);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,.2);
 }
 
 .hotel-content {
-    padding: 22px;
+    padding: 22px 22px 0 22px;
 }
 
 .hotel-name {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .hotel-location {
-    font-size: 14px;
-    opacity: .7;
-    margin: 8px 0;
+    font-size: 13.5px;
+    opacity: .65;
+    margin: 8px 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.rating {
-    color: var(--gold);
-    font-size: 14px;
+/* Perforated ticket divider */
+.ticket-divider {
+    position: relative;
+    height: 0;
+    border-top: 2px dashed rgba(255,255,255,.22);
+    margin: 20px 0 0;
+}
+
+.ticket-divider::before,
+.ticket-divider::after {
+    content: "";
+    position: absolute;
+    top: -12px;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at center, transparent 0 60%, transparent 60%);
+    border-radius: 50%;
+}
+
+.ticket-divider::before {
+    left: -22px;
+    background: var(--night-2);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+}
+
+.ticket-divider::after {
+    right: -22px;
+    background: var(--night-2);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+}
+
+.hotel-stub {
+    padding: 16px 22px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--stub);
+    border-radius: 0 0 20px 20px;
 }
 
 .price {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--amber-light);
+    font-family: 'Fraunces', serif;
 }
 
 .price span {
     font-size: 12px;
-    opacity: .7;
+    opacity: .65;
     color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.btn-stub {
+    padding: 9px 20px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--amber), var(--brass));
+    color: var(--night);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn-stub:hover {
+    transform: translateY(-2px);
+    color: var(--night);
 }
 
 /* FEATURES */
 
 .feature {
     text-align: center;
-    padding: 25px;
+    padding: 30px 25px;
 }
 
 .feature-icon {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     margin-bottom: 15px;
+    color: var(--amber);
 }
 
 .feature h4 {
-    font-size: 1.1rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
 }
 
 .feature p {
-    opacity: .7;
+    opacity: .65;
     font-size: 14px;
+    margin-top: 6px;
 }
 
 /* SERVER INFO */
@@ -291,31 +447,37 @@ body {
 .info {
     padding: 12px 16px;
     background: rgba(255,255,255,.05);
-    border-radius: 12px;
-    border-left: 3px solid var(--primary);
+    border-radius: 10px;
+    border-left: 3px solid var(--amber);
     margin-bottom: 12px;
+    font-size: 14px;
 }
 
 .info b {
-    color: var(--primary);
+    color: var(--amber-light);
 }
 
 /* FOOTER */
 
 footer {
-    margin-top: 80px;
-    padding: 30px 20px;
+    margin-top: 90px;
+    padding: 36px 20px;
 
     text-align: center;
 
-    background: rgba(0,0,0,.35);
+    background: rgba(4,20,15,.6);
     border-top: 1px solid rgba(255,255,255,.1);
 }
 
 footer p {
     margin: 4px;
-    opacity: .7;
+    opacity: .65;
     font-size: 14px;
+}
+
+footer .brand {
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 /* MOBILE */
@@ -344,12 +506,12 @@ footer p {
 
 <!-- NAVBAR -->
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom" id="mainNav">
 
     <div class="container">
 
         <a class="navbar-brand brand" href="#">
-            🏨 Stay<span>Easy</span>
+            <i class="bi bi-building"></i> Stay<span>Easy</span>
         </a>
 
         <button
@@ -398,7 +560,7 @@ footer p {
         </div>
 
         <h1>
-            🏨 Hotel Booking Portal
+            Your journey deserves a beautiful stay
         </h1>
 
         <p>
@@ -418,7 +580,7 @@ footer p {
 <div class="glass booking-card" id="booking">
 
     <h3 class="booking-title">
-        🔎 Find Your Perfect Stay
+        <i class="bi bi-search"></i> Find Your Perfect Stay
     </h3>
 
     <form action="searchHotel" method="get">
@@ -510,7 +672,7 @@ footer p {
                     type="submit"
                     class="btn-book">
 
-                    🔍 Search Hotels
+                    <i class="bi bi-search"></i> Search Hotels
 
                 </button>
 
@@ -528,8 +690,12 @@ footer p {
 <section class="section" id="hotels">
 
     <h2 class="section-title">
-        ⭐ Popular Hotels
+        Popular Hotels
     </h2>
+
+    <p class="section-sub">
+        Handpicked stays, ready to book
+    </p>
 
 
     <div class="row g-4">
@@ -541,10 +707,18 @@ footer p {
 
             <div class="glass hotel-card">
 
-                <img
-                    src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80"
-                    class="hotel-image"
-                    alt="Luxury Hotel">
+                <div class="hotel-image-wrap">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80"
+                        class="hotel-image"
+                        alt="Luxury Hotel">
+
+                    <div class="hotel-rating-badge">
+                        <i class="bi bi-star-fill"></i> 4.8
+                    </div>
+
+                </div>
 
                 <div class="hotel-content">
 
@@ -553,32 +727,23 @@ footer p {
                     </div>
 
                     <div class="hotel-location">
-                        📍 Bangalore, India
+                        <i class="bi bi-geo-alt"></i> Bangalore, India
                     </div>
 
-                    <div class="rating">
-                        ★★★★★
-                        <span>4.8</span>
+                    <div class="ticket-divider"></div>
+
+                </div>
+
+                <div class="hotel-stub">
+
+                    <div class="price">
+                        ₹4,999
+                        <span>/ night</span>
                     </div>
 
-                    <hr>
-
-                    <div class="d-flex justify-content-between align-items-center">
-
-                        <div class="price">
-                            ₹4,999
-                            <span>/ night</span>
-                        </div>
-
-                        <a href="booking.jsp"
-                           class="btn btn-sm btn-book"
-                           style="width:auto;padding:8px 18px;">
-
-                            Book
-
-                        </a>
-
-                    </div>
+                    <a href="booking.jsp" class="btn-stub">
+                        Book <i class="bi bi-arrow-right"></i>
+                    </a>
 
                 </div>
 
@@ -593,10 +758,18 @@ footer p {
 
             <div class="glass hotel-card">
 
-                <img
-                    src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80"
-                    class="hotel-image"
-                    alt="Luxury Resort">
+                <div class="hotel-image-wrap">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80"
+                        class="hotel-image"
+                        alt="Luxury Resort">
+
+                    <div class="hotel-rating-badge">
+                        <i class="bi bi-star-fill"></i> 4.9
+                    </div>
+
+                </div>
 
                 <div class="hotel-content">
 
@@ -605,32 +778,23 @@ footer p {
                     </div>
 
                     <div class="hotel-location">
-                        📍 Goa, India
+                        <i class="bi bi-geo-alt"></i> Goa, India
                     </div>
 
-                    <div class="rating">
-                        ★★★★★
-                        <span>4.9</span>
+                    <div class="ticket-divider"></div>
+
+                </div>
+
+                <div class="hotel-stub">
+
+                    <div class="price">
+                        ₹6,499
+                        <span>/ night</span>
                     </div>
 
-                    <hr>
-
-                    <div class="d-flex justify-content-between align-items-center">
-
-                        <div class="price">
-                            ₹6,499
-                            <span>/ night</span>
-                        </div>
-
-                        <a href="booking.jsp"
-                           class="btn btn-sm btn-book"
-                           style="width:auto;padding:8px 18px;">
-
-                            Book
-
-                        </a>
-
-                    </div>
+                    <a href="booking.jsp" class="btn-stub">
+                        Book <i class="bi bi-arrow-right"></i>
+                    </a>
 
                 </div>
 
@@ -645,10 +809,18 @@ footer p {
 
             <div class="glass hotel-card">
 
-                <img
-                    src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=80"
-                    class="hotel-image"
-                    alt="City Hotel">
+                <div class="hotel-image-wrap">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=80"
+                        class="hotel-image"
+                        alt="City Hotel">
+
+                    <div class="hotel-rating-badge">
+                        <i class="bi bi-star-fill"></i> 4.6
+                    </div>
+
+                </div>
 
                 <div class="hotel-content">
 
@@ -657,32 +829,23 @@ footer p {
                     </div>
 
                     <div class="hotel-location">
-                        📍 Hyderabad, India
+                        <i class="bi bi-geo-alt"></i> Hyderabad, India
                     </div>
 
-                    <div class="rating">
-                        ★★★★☆
-                        <span>4.6</span>
+                    <div class="ticket-divider"></div>
+
+                </div>
+
+                <div class="hotel-stub">
+
+                    <div class="price">
+                        ₹3,999
+                        <span>/ night</span>
                     </div>
 
-                    <hr>
-
-                    <div class="d-flex justify-content-between align-items-center">
-
-                        <div class="price">
-                            ₹3,999
-                            <span>/ night</span>
-                        </div>
-
-                        <a href="booking.jsp"
-                           class="btn btn-sm btn-book"
-                           style="width:auto;padding:8px 18px;">
-
-                            Book
-
-                        </a>
-
-                    </div>
+                    <a href="booking.jsp" class="btn-stub">
+                        Book <i class="bi bi-arrow-right"></i>
+                    </a>
 
                 </div>
 
@@ -700,8 +863,12 @@ footer p {
 <section class="section" id="features">
 
     <h2 class="section-title">
-        ✨ Why Book With Us?
+        Why Book With Us?
     </h2>
+
+    <p class="section-sub">
+        The essentials, done right
+    </p>
 
     <div class="row g-4">
 
@@ -710,7 +877,7 @@ footer p {
             <div class="glass feature">
 
                 <div class="feature-icon">
-                    🔒
+                    <i class="bi bi-shield-lock"></i>
                 </div>
 
                 <h4>
@@ -732,7 +899,7 @@ footer p {
             <div class="glass feature">
 
                 <div class="feature-icon">
-                    💰
+                    <i class="bi bi-tags"></i>
                 </div>
 
                 <h4>
@@ -753,7 +920,7 @@ footer p {
             <div class="glass feature">
 
                 <div class="feature-icon">
-                    ⭐
+                    <i class="bi bi-award"></i>
                 </div>
 
                 <h4>
@@ -785,7 +952,7 @@ footer p {
             <div class="glass">
 
                 <h3 class="booking-title">
-                    🌐 Server Information
+                    <i class="bi bi-hdd-network"></i> Server Information
                 </h3>
 
                 <%
@@ -818,7 +985,7 @@ footer p {
             <div class="glass">
 
                 <h3 class="booking-title">
-                    💻 Client Information
+                    <i class="bi bi-laptop"></i> Client Information
                 </h3>
 
                 <p class="info">
@@ -847,6 +1014,10 @@ footer p {
 
 <footer>
 
+    <a class="navbar-brand brand" href="#">
+        <i class="bi bi-building"></i> Stay<span>Easy</span>
+    </a>
+
     <p>
         © 2026 Hotel Booking Portal
     </p>
@@ -859,6 +1030,30 @@ footer p {
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script>
+    // Shrink navbar on scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // Reveal hotel cards as they enter the viewport
+    const cards = document.querySelectorAll('.hotel-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('in-view'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    cards.forEach(card => observer.observe(card));
 </script>
 
 </body>
