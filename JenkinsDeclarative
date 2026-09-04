@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    tools{
+        maven "maven"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+               git branch: 'main', url: 'https://github.com/Maheshbabuduggi/Maven_web_app.git'
+            }
+        }
+        stage('Compile') {
+            steps {
+                sh "mvn compile"
+            }
+        }
+        stage('Build'){steps{
+            sh "mvn clean package"
+        }}
+         stage('Sonarqube') {
+            steps {
+                sh "mvn sonar:sonar"
+            }
+        }
+         stage('Artifactory') {
+            steps {
+                sh "mvn deploy"
+            }
+        }
+        stage("Deploying"){
+            steps{
+                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '616328a2-c4ce-4324-9043-333655e7cbc7', path: '', url: 'http://43.204.111.107:8082/')], contextPath: '/mahesh', war: 'target/maven-web-application.war'
+            }
+        }
+    }
+}
